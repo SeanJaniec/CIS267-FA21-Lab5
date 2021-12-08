@@ -1,15 +1,15 @@
 <template>
-  <div id="party">
-    <h2>Party</h2>
-    <h3>{{ partyPokemon.length }} of 6</h3>
-    <div id="party-pokemon">
+  <div id="all">
+ 
+    <div id="all-pokemon">
 
       <PokemonCard 
-        v-for="p in partyPokemon" 
+        @click-pokemon="add"
+
+        v-for="p in allPokemon" 
         :key="p.id" 
         :pokemon="p" 
         
-        @click-pokemon="remove"
         />
 
     </div>
@@ -20,24 +20,31 @@
 import PokemonCard from "./PokemonCard.vue"
 
 export default {
-  name: "PartyPokemon",
+  name: "AllPokemon",
   components: {
     PokemonCard
     },
   props: {
-    partyPokemon: Array,
+    allPokemon: Array,
   },
   methods: {
-    remove(id) {
-      this.$emit("remove-pokemon", id);
+        add(id) {
+      this.$emit("add-pokemon", id);
+      console.log(id)
+    },
+
     }
-  }
+  
 };
 </script>
 
 <style>
-#party-pokemon {
+
+#all-pokemon {
+  overflow: scroll;
+  height: 50vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
 }</style>

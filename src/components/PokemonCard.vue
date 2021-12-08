@@ -1,6 +1,7 @@
 <template>
   <div class="pokemon" @click="click">
     <h1>{{ pokemon.name }}</h1>
+    <h1>{{ pokemon.image }}</h1>
 
     <h2>{{ pokemon.id }}</h2>
   </div>
@@ -15,12 +16,15 @@ export default {
     test: String,
   },
   data() {
-    return {};
+    return {
+      
+    };
   },
   methods: {
     click() {
       this.$emit("click-pokemon", this.pokemon.id);
     },
+
   },
 };
 </script>
